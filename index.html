@@ -1,11 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wesley Machado</title>
+    <title>Currículo: Wesley Machado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #6a0dad;
+            /* Roxo vibrante */
+            --secondary-color: #8a2be2;
+            /* Azul violeta */
+            --text-dark: #333;
+            --bg-gradient-start: #b364e7;
+            --bg-gradient-end: #8a2be2;
+            --card-bg: #ffffff;
+            --shadow-light: rgba(0, 0, 0, 0.15);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-dark);
+            overflow: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .profile-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            width: 90%;
+            max-width: 550px;
+            /* Ajuste para menos conteúdo */
+            padding: 40px 35px;
+            text-align: center;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInCard 1s ease-out forwards;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(0px) scale(1.01);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        @keyframes fadeInCard {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        header {
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #eee;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            animation: textPop 0.8s ease-out forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            margin-top: 5px;
+            margin-bottom: 0;
+            font-weight: 600;
+            animation: fadeInText 1s ease-out forwards;
+            animation-delay: 0.8s;
+            opacity: 0;
+        }
+
+        @keyframes textPop {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+
+            80% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-bottom: 8px;
+            position: relative;
+            display: inline-block;
+            animation: slideInLeft 0.8s ease-out forwards;
+            animation-delay: 1.2s;
+            opacity: 0;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .contact-info {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            /* Coloca em coluna para ficar elegante */
+            align-items: flex-start;
+            /* Alinha à esquerda dentro do cartão */
+            font-size: 1.1em;
+            color: var(--text-dark);
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            opacity: 0;
+            animation: fadeInListItem 0.6s ease-out forwards;
+            animation-delay: calc(1.4s + 0.2s * var(--item-index));
+            /* Animação sequencial */
+        }
+
+        .contact-info li i {
+            color: var(--secondary-color);
+            margin-right: 15px;
+            font-size: 1.3em;
+            width: 25px;
+            text-align: center;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInListItem {
+            from {
+                opacity: 0;
+                transform: translateX(-15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="profile-card">
+        <header>
+            <h1>Wesley Machado</h1>
+            <h2>Currículo: Wesley Machado</h2>
+        </header>
+
+        <section class="personal-data">
+            <h2 class="section-title">Dados Pessoais</h2>
+
+            <ul class="contact-info">
+                <li style="--item-index: 1;"><i class="fas fa-birthday-cake"></i> 07/12/2007</li>
+                <li style="--item-index: 2;"><i class="fas fa-map-marker-alt"></i> Empresa</li>
+                <li style="--item-index: 3;"><i class="fas fa-phone"></i> (55) 9999-9999</li>
+                <li style="--item-index: 4;"><i class="fas fa-envelope"></i> <a
+                        href="mailto:fazoL@hotmail.com">fazoL@hotmail.com</a></li>
+            </ul>
+        </section>
+
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
